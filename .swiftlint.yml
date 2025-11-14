@@ -1,0 +1,23 @@
+disabled_rules:
+  - trailing_whitespace
+  - large_tuple
+  - type_name
+  - identifier_name
+
+opt_in_rules:
+  - empty_count
+  - explicit_init
+  - redundant_string_enum_value
+  - operator_usage_whitespace
+  - closure_spacing
+  - collection_alignment
+
+line_length: 150
+
+file_length:
+  warning: 500
+  error: 800
+
+type_body_length:
+  warning: 400
+  error: 600
