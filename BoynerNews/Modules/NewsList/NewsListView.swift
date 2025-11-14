@@ -27,6 +27,7 @@ struct NewsListView: View {
                                  message: NewsList.emptyListMessage)
         .isLoading(viewModel.isLoading)
         .presentAlert(alert: $viewModel.alert)
+        .accessibilityIdentifier(Identifiers.NewsList.list)
     }
     
     @ViewBuilder
@@ -37,6 +38,7 @@ struct NewsListView: View {
                     NewsRowView(model: article)
                 }
                 .frame(height: NewsList.breakingNewsSectionHeight)
+                .accessibilityIdentifier(Identifiers.NewsList.slider)
             }
         }
     }
@@ -50,6 +52,7 @@ struct NewsListView: View {
                 }
                 .listRowSeparator(.hidden)
             }
+            .accessibilityIdentifier(Identifiers.NewsList.recommendations)
         }
     }
 }

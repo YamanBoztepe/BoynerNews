@@ -19,6 +19,7 @@ struct AlertModifier: ViewModifier {
                 makeAlertCard(alert: alert)
                     .transition(.scale.combined(with: .opacity))
                     .padding(.horizontal)
+                    .accessibilityIdentifier(Identifiers.Common.alert)
             }
         }
         .animation(.spring(), value: alert != nil)

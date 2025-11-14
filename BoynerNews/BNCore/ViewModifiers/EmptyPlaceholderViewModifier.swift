@@ -48,4 +48,3 @@ extension View {
         modifier(EmptyPlaceholderViewModifier(present: present, message: message, image: image))
     }
 }
-

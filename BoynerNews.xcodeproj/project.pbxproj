@@ -29,9 +29,22 @@
 		1CCC9F902EC3276C00CD9DD7 /* BoynerNewsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoynerNewsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1CF838B62EC7B68100C201DC /* Exceptions for "BoynerNews" folder in "BoynerNewsUITests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				BNCore/Identifiers.swift,
+			);
+			target = 1CCC9F8F2EC3276C00CD9DD7 /* BoynerNewsUITests */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		1CCC9F762EC3276A00CD9DD7 /* BoynerNews */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				1CF838B62EC7B68100C201DC /* Exceptions for "BoynerNews" folder in "BoynerNewsUITests" target */,
+			);
 			path = BoynerNews;
 			sourceTree = "<group>";
 		};

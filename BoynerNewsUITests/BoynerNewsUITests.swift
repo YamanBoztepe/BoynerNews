@@ -9,34 +9,44 @@ import XCTest
 
 final class BoynerNewsUITests: XCTestCase {
     private var app: XCUIApplication!
-    private var newsSourceListScreen: NewsSourceListScreen!
-    private var newsListScreen: NewsListScreen!
+    private var sourceListScreen: NewsSourceListScreen!
     
     override func setUp() {
         continueAfterFailure = false
+        app = XCUIApplication()
+        sourceListScreen = NewsSourceListScreen(app: app)
         
+        app.launchArguments = ["testing"]
+        app.launch()
     }
     
     override func tearDown() {
         app.terminate()
     }
     
-    func testExample() {
-        app = XCUIApplication()
-        app.launchArguments = ["testing"]
-        app.launch()              
-    }
-    
     // MARK: - Tests
     
-    func test_newsSourceList_whenSuccess_loadsAndNavigatesToArticles() {
-        // When
-        let listViewLoaded = newsSourceListScreen.waitForListView()
-        newsSourceListScreen.tapSource(id: "bbc-news")
+    func test_sourceList_navigateToNewsList() {
+        sourceListScreen
+            .waitForListToLoad()
+            .tapFirstSource()
+            .waitForListToLoad()
+            .verifySliderExists()
+    }
+    
+    func test_newsList_pullToRefresh_simulatesErrorOnThirdAttempt() throws {
+        let newsListScreen = sourceListScreen
+            .waitForListToLoad()
+            .tapFirstSource()
+            .waitForListToLoad()
         
-        // Then
-        XCTAssertTrue(listViewLoaded)
-        XCTAssertTrue(newsListScreen.waitForSlider())
-        XCTAssertTrue(newsListScreen.recommendationSection.exists)
+        newsListScreen
+            .pullToRefresh()
+            .waitForListToLoad()
+            .pullToRefresh()
+            .waitForListToLoad()
+            .pullToRefresh()
+            .verifyAlertExists(message: "Information could not be received!")
     }
 }
+

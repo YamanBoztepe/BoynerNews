@@ -21,6 +21,7 @@ struct LoadingModifier: ViewModifier {
                     .progressViewStyle(CircularProgressViewStyle(tint: .primary))
                     .scaleEffect(1.5)
                     .transition(.opacity)
+                    .accessibilityIdentifier(Identifiers.Common.loadingIndicator)
             }
         }
         .animation(.easeInOut, value: isLoading)

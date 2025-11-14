@@ -33,6 +33,7 @@ private extension NewsSourceListView {
     var categoryBubbles: some View {
         HorizontalScrollItemsView(items: viewModel.categories,
                                   selectedItems: $viewModel.selectedCategories)
+        .accessibilityIdentifier(Identifiers.NewsSourceList.categories)
     }
     
     var newsSourceList: some View {
@@ -44,6 +45,7 @@ private extension NewsSourceListView {
             .buttonStyle(.plain)
         }
         .listStyle(.plain)
+        .accessibilityIdentifier(Identifiers.NewsSourceList.list)
     }
 }
 
