@@ -8,56 +8,54 @@
 import Combine
 import SwiftUI
 
-extension NewsListView {
-    class ViewModel: BaseViewModel {
-        @Published var sliderArticles = [NewsRowViewModel]()
-        @Published var listArticles = [NewsRowViewModel]()
-        @Published var noArticlesFound = false
-        @Published var screenTitle = ""
+final class NewsListViewModel: BaseViewModel {
+    @Published var sliderArticles = [NewsRowViewModel]()
+    @Published var listArticles = [NewsRowViewModel]()
+    @Published var noArticlesFound = false
+    @Published var screenTitle = ""
+    
+    private var pullToRefreshCounter = 0
+    private var timer: Timer?
+    
+    var screenRequest: BNServiceRequest?
+    var articles = [NewsRowViewModel]() {
+        didSet {
+            sliderArticles = Array(articles.prefix(3))
+            listArticles = Array(articles.dropFirst(3))
+        }
+    }
+    
+    func getNews(for source: String) async {
+        let request = BNServiceRequest(endpoint: .topHeadlines, parameters: ["sources": source])
+        let response = await callService(request, responseType: NewsList.ArticlesResponse.self)
         
-        private var pullToRefreshCounter = 0
-        private var timer: Timer?
-        
-        var screenRequest: BNServiceRequest?
-        var articles = [NewsRowViewModel]() {
-            didSet {
-                sliderArticles = Array(articles.prefix(3))
-                listArticles = Array(articles.dropFirst(3))
+        articles = getArticles(from: response)
+        screenTitle = response?.articles?.first?.source.name ?? NewsList.title
+        screenRequest = request
+        noArticlesFound = articles.isEmpty
+    }
+    
+    func pullToRefresh() async {
+        await refreshNews()
+        simulateNetworkError()
+    }
+    
+    func startPolling() {
+        pollingService.startPolling(interval: 60) { [weak self] in
+            Task {
+                await self?.refreshNews()
             }
         }
-        
-        func getNews(for source: String) async {
-            let request = BNServiceRequest(endpoint: .topHeadlines, parameters: ["sources": source])
-            let response = await callService(request, responseType: NewsList.ArticlesResponse.self)
-            
-            articles = getArticles(from: response)
-            screenTitle = response?.articles?.first?.source.name ?? NewsList.title
-            screenRequest = request
-            noArticlesFound = articles.isEmpty
-        }
-        
-        func pullToRefresh() async {
-            await refreshNews()
-            simulateNetworkError()
-        }
-        
-        func startPolling() {
-            pollingService.startPolling(interval: 60) { [weak self] in
-                Task {
-                    await self?.refreshNews()
-                }
-            }
-        }
-        
-        func stopPolling() {
-            pollingService.stopPolling()
-        }
+    }
+    
+    func stopPolling() {
+        pollingService.stopPolling()
     }
 }
 
 // MARK: - Helper Methods
 
-private extension NewsListView.ViewModel {
+private extension NewsListViewModel {
     
     func refreshNews() async {
         guard let screenRequest else {
@@ -101,7 +99,7 @@ private extension NewsListView.ViewModel {
         } else {
             articlesRepository.addArticle(id)
         }
-
+        
         if let index = articles.firstIndex(where: { $0.id == id }) {
             articles[index].isAddedToReadingList = !isArticleExists
         }

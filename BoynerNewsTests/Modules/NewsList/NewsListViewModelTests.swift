@@ -12,13 +12,13 @@ import XCTest
 final class NewsListViewModelTests: CommonXCTestCase {
     // MARK: Subject under test
     
-    var sut: NewsListView.ViewModel!
+    var sut: NewsListViewModel!
     
     // MARK: Test lifecycle
     
     override func setUp() {
         super.setUp()
-        sut = NewsListView.ViewModel()
+        sut = NewsListViewModel()
     }
     
     override func tearDown() {

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NewsSourceListView: View {
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = NewsSourceListViewModel()
     
     var body: some View {
         VStack(spacing: 24) {
