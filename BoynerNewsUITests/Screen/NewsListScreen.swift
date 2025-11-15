@@ -16,12 +16,6 @@ struct NewsListScreen: ScreenProtocol {
     var slider: XCUIElement { app.collectionViews[Identifiers.NewsList.slider] }
     var loadingIndicator: XCUIElement { app.otherElements[Identifiers.Common.loadingIndicator] }
     
-    // MARK: - Helpers
-    
-    private func readingListButton(id: String) -> XCUIElement {
-        return app.buttons["toggle_reading_list_button_\(id)"]
-    }
-    
     // MARK: - Actions
     
     @discardableResult
@@ -31,12 +25,6 @@ struct NewsListScreen: ScreenProtocol {
         let end = start.withOffset(CGVector(dx: 0, dy: 500))
         start.press(forDuration: 0.1, thenDragTo: end)
         
-        return self
-    }
-    
-    @discardableResult
-    func toggleReadingList(forArticleId id: String) -> Self {
-        readingListButton(id: id).tap()
         return self
     }
     

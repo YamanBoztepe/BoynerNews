@@ -11,11 +11,11 @@ enum NewsList {
     // MARK: - Static Texts
     static let title = "News"
     static let errorAlertMessage = "Information could not be received!"
-    static let emptyListMessage = "No Articles Found. Try Again Later"
+    static let emptyListMessage = "No Articles Found.\nTry Again Later"
     static let tryAgainText = "Try Again"
     static let breakingNewsSectionTitle = "Breaking News"
     static let recommendationsSectionTitle = "Recommendations"
-    static let breakingNewsSectionHeight: CGFloat = 250
+    static let breakingNewsSectionHeight: CGFloat = 225
     
     // MARK: - Response Models
     struct ArticlesResponse: Decodable {

@@ -28,15 +28,15 @@ struct EmptyPlaceholderViewModifier: ViewModifier {
 private extension EmptyPlaceholderViewModifier {
     
     var emptyPlaceholderView: some View {
-        VStack {
-            Image(image ?? "exclamationMark")
+        VStack(spacing: 16) {
+            Image(image ?? "nothingFound")
                 .font(.system(size: 40))
                 .foregroundStyle(.secondary)
-                .padding(.bottom, 16)
             
             Text(message)
                 .foregroundStyle(.primary)
                 .font(.headline)
+                .multilineTextAlignment(.center)
         }
     }
 }
