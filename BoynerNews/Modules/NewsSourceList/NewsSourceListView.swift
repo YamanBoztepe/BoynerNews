@@ -11,11 +11,11 @@ struct NewsSourceListView: View {
     @StateObject private var viewModel = NewsSourceListViewModel()
     
     var body: some View {
-        VStack(spacing: 24) {
-            categoryBubbles
-            newsSourceList
+        List {
+            categorySection
+            sourceListSection
         }
-        .padding(.top)
+        .listStyle(.plain)
         .task { await viewModel.getNewsSources() }
         .navigationTitle(NewsSourceList.title)
         .animation(.smooth, value: viewModel.selectedCategories)
@@ -30,21 +30,24 @@ struct NewsSourceListView: View {
 
 private extension NewsSourceListView {
     
-    var categoryBubbles: some View {
-        HorizontalScrollItemsView(items: viewModel.categories,
-                                  selectedItems: $viewModel.selectedCategories)
+    var categorySection: some View {
+        Section {
+            HorizontalScrollItemsView(items: viewModel.categories,
+                                      selectedItems: $viewModel.selectedCategories)
+        }
+        .listRowInsets(NewsSourceList.categorySectionInsets)
+        .listRowSeparator(.hidden)
         .accessibilityIdentifier(Identifiers.NewsSourceList.categories)
     }
     
-    var newsSourceList: some View {
-        List(viewModel.sources) { source in
+    var sourceListSection: some View {
+        ForEach(viewModel.sources) { source in
             NavigationLink(destination: NewsListView(source: source.id.stringValue)) {
                 TitleAndDescriptionView(title: source.name.stringValue,
                                         description: source.description.stringValue)
             }
             .buttonStyle(.plain)
         }
-        .listStyle(.plain)
         .accessibilityIdentifier(Identifiers.NewsSourceList.list)
     }
 }

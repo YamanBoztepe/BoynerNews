@@ -14,17 +14,14 @@ struct LoadingModifier: ViewModifier {
         ZStack {
             content
                 .disabled(isLoading)
-                .blur(radius: isLoading ? 2 : 0)
+                .opacity(isLoading ? 0.6 : 1.0)
             
             if isLoading {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle(tint: .primary))
-                    .scaleEffect(1.5)
-                    .transition(.opacity)
                     .accessibilityIdentifier(Identifiers.Common.loadingIndicator)
             }
         }
-        .animation(.easeInOut, value: isLoading)
     }
 }
 

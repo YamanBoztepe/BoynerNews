@@ -8,7 +8,7 @@
 import Foundation
 
 enum NewsList {
-    // MARK: - Static Texts
+    // MARK: - Constant
     static let title = "News"
     static let errorAlertMessage = "Information could not be received!"
     static let emptyListMessage = "No Articles Found.\nTry Again Later"

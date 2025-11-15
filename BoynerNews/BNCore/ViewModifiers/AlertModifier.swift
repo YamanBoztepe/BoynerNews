@@ -17,9 +17,8 @@ struct AlertModifier: ViewModifier {
             if let alert {
                 tappableBackground
                 makeAlertCard(alert: alert)
+                    .frame(width: 500)
                     .transition(.scale.combined(with: .opacity))
-                    .padding(.horizontal)
-                    .accessibilityIdentifier(Identifiers.Common.alert)
             }
         }
         .animation(.spring(), value: alert != nil)
@@ -53,7 +52,6 @@ private extension AlertModifier {
                         .foregroundStyle(.white)
                         .font(.caption)
                         .padding()
-                        .frame(maxWidth: .infinity)
                         .background(Color.blue)
                         .cornerRadius(8)
                 }

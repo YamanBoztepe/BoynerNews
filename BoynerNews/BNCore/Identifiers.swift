@@ -9,7 +9,6 @@ import Foundation
 
 enum Identifiers {
     enum Common {
-        static let alert = "alert"
         static let loadingIndicator = "loadingIndicator"
     }
     

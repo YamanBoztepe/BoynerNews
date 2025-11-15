@@ -36,6 +36,7 @@ struct SliderView<Data: RandomAccessCollection, Content: View>: View where Data.
             Text("\(currentIndex + 1)/\(items.count)")
                 .font(.caption)
                 .foregroundColor(.secondary)
+                .fixedSize()
             
             ProgressView(value: Double(currentIndex), total: Double(items.count - 1))
                 .progressViewStyle(LinearProgressViewStyle(tint: .primary))

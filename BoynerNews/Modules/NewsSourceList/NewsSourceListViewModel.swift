@@ -24,7 +24,7 @@ final class NewsSourceListViewModel: BaseViewModel {
         let response = await callService(request, responseType: NewsSourceList.SourcesResponse.self)
         
         // Keep only English sources
-        let newsSources = (response?.sources?.filter { $0.language == "en" }).valueOrEmpty
+        let newsSources = (response?.sources?.filter { $0.language == NewsSourceList.englishFilter }).valueOrEmpty
         allSources = newsSources
         
         // Extract unique categories
