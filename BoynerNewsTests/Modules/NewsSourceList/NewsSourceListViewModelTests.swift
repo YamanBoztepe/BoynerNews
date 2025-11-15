@@ -29,54 +29,34 @@ final class NewsSourceListViewModelTests: CommonXCTestCase {
     // MARK: - Tests
     
     func test_getNewsSources() async {
-        // Given
-        fakeNetworkService.result = .success(NewsSourceListMockData.sourcesResponse)
-        sut.service = fakeNetworkService
-        
         // When
         await sut.getNewsSources()
         
         // Then
-        XCTAssertEqual(sut.sources.count, 2)
+        let sources = NewsSourceListMockData.screenDataResponse?.sources
+        
+        XCTAssertEqual(sut.sources.count, sources?.count)
         XCTAssertFalse(sut.categories.isEmpty)
     }
     
-    func test_getNewsSources_whenNetworkErrorOccur_shouldPresentAlert() async {
-        // Given
-        fakeNetworkService.result = .failure(.serverError)
-        sut.service = fakeNetworkService
-        
-        // When
-        await sut.getNewsSources()
-        
-        // Then
-        XCTAssertEqual(sut.alert?.title, NetworkError.serverError.localizedDescription)
-    }
-    
     func test_selectedCategories_whenEmpty_shouldShowAllSources() async {
-        // Given
-        fakeNetworkService.result = .success(NewsSourceListMockData.sourcesResponse)
-        sut.service = fakeNetworkService
-        
         // When
         await sut.getNewsSources()
         sut.selectedCategories = []
         
         // Then
-        XCTAssertEqual(sut.sources.count, 2)
+        let sources = NewsSourceListMockData.screenDataResponse?.sources
+        
+        XCTAssertEqual(sut.sources.count, sources?.count)
     }
     
     func test_selectedCategories_filterSources() async {
-        // Given
-        fakeNetworkService.result = .success(NewsSourceListMockData.sourcesResponse)
-        sut.service = fakeNetworkService
-        
         // When
         await sut.getNewsSources()
-        sut.selectedCategories = ["sports"]
+        sut.selectedCategories = [NewsSourceListMockData.selectedCategory]
         
         // Then
-        XCTAssertEqual(sut.sources.count, 1)
-        XCTAssertEqual(sut.sources.first?.category, "sports")
+        XCTAssertEqual(sut.sources.count, 7)
+        XCTAssertEqual(sut.sources.first?.category, NewsSourceListMockData.selectedCategory)
     }
 }

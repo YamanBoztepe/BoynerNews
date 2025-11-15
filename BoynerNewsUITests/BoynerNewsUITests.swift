@@ -15,31 +15,59 @@ final class BoynerNewsUITests: XCTestCase {
         continueAfterFailure = false
         app = XCUIApplication()
         sourceListScreen = NewsSourceListScreen(app: app)
-        
-        app.launchArguments = ["testing"]
-        app.launch()
     }
     
     override func tearDown() {
         app.terminate()
     }
     
+    private func launch(with scenario: UITestScenario? = nil) {
+        var launchArguments = ["-UITesting"]
+        
+        if let scenario {
+            launchArguments.append(scenario.rawValue)
+        }
+        
+        app.launchArguments = launchArguments
+        app.launch()
+    }
+    
     // MARK: - Tests
     
+    func test_sourceList_showsErrorAlert_onLaunchFailure() {
+        // Given
+        launch(with: .serverErrorFailure)
+        
+        // Then
+        sourceListScreen.verifyAlertExists(message: "Server error")
+    }
+    
     func test_sourceList_navigateToNewsList() {
-        sourceListScreen
+        // Given
+        launch()
+        
+        // When
+        let newsListScreen = sourceListScreen
             .waitForListToLoad()
             .tapFirstSource()
+        
+        // Then
+        newsListScreen
             .waitForListToLoad()
             .verifySliderExists()
     }
     
     func test_newsList_pullToRefresh_simulatesErrorOnThirdAttempt() throws {
+        // Given
+        launch()
+        
+        // When
         let newsListScreen = sourceListScreen
             .waitForListToLoad()
             .tapFirstSource()
             .waitForListToLoad()
         
+        // then
         newsListScreen
             .pullToRefresh()
             .waitForListToLoad()

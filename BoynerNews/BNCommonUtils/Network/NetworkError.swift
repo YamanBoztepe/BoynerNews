@@ -16,9 +16,9 @@ enum NetworkError: Error, Equatable {
     var localizedDescription: String {
         switch self {
         case .serverError: 
-            return "Server error."
+            return "Server error"
         case .invalidURL: 
-            return "Invalid URL."
+            return "Invalid URL"
         case .decodingError:
             return "Decoding failed"
         case .unknownError(let message):

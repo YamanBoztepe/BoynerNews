@@ -10,7 +10,7 @@ enum NetworkConstants {
     
     enum BaseURL: String {
         case release = "https://newsapi.org/v2/"
-        case mock = "ht!tp://bad_url" // invalid url for testing
+        case dummyData = ""
     }
     
     enum Endpoints: String {

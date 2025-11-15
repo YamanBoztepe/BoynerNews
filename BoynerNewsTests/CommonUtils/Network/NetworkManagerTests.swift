@@ -19,7 +19,7 @@ final class NetworkManagerTests: CommonXCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = NetworkManager(session: fakeURLSession, environment: .test)
+        sut = NetworkManager(environment: .prod, session: fakeURLSession)
     }
     
     override func tearDown() {
@@ -31,21 +31,6 @@ final class NetworkManagerTests: CommonXCTestCase {
     }
     
     // MARK: - Tests
-    
-    func test_request_whenURLInvalid_shoulReturnError() async {
-        // Given
-        sut = NetworkManager(session: fakeURLSession, environment: .mock)
-        
-        // When
-        let result = await sut.callService(request, responseType: String.self)
-        
-        // Then
-        if case let .failure(error) = result {
-            XCTAssertEqual(error, .invalidURL)
-        } else {
-            XCTFail("Expected invalidURL error but got success")
-        }
-    }
     
     func test_request_whenURLResponseInvalid_shoulReturnError() async {
         // When

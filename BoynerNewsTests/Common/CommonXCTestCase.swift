@@ -9,7 +9,6 @@ import XCTest
 @testable import BoynerNews
 
 class CommonXCTestCase: XCTestCase {
-    let fakeNetworkService = FakeNetworkService()
     let fakeURLSession = FakeURLSession()
     let fakeArticleRepository = FakeArticlesRepository()
     let fakePollingService = FakePollingService()

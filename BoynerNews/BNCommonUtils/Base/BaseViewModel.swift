@@ -17,7 +17,7 @@ class BaseViewModel: ObservableObject {
     var articlesRepository: ArticlesRepositoryProtocol
     var pollingService: PollingServiceProtocol
     
-    init(service: NetworkServiceProtocol = NetworkManager(),
+    init(service: NetworkServiceProtocol = NetworkFactory.makeNetworkManager(),
          articlesRepository: ArticlesRepositoryProtocol = ArticlesRepository(),
          pollingService: PollingServiceProtocol = PollingService()) {
         self.service = service

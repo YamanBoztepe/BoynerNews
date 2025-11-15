@@ -1,0 +1,137 @@
+{
+    "status": "ok",
+    "totalResults": 10,
+    "articles": [
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "The 'bogan' Australian giving War & Peace an irreverent remake",
+            "description": "Ander Louis has written a new version of Leo Tolstoy's classic Russian novel in Australian slang.",
+            "url": "https://www.bbc.co.uk/news/articles/cx2lkjd2kmdo",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/397b/live/29b928b0-c145-11f0-8456-eff94716b162.jpg",
+            "publishedAt": "2025-11-15T07:22:16.4606666Z",
+            "content": "At first glance Tolstoy's book, filled with the lives of rich, powerful Russians, seems worlds apart from modern-day Australia.\r\nBut Louis argues bogan is the ultimate equaliser as the informal slang… [+1518 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "TikTok sticking out tongue trend: Victim in Finsbury Park speaks out",
+            "description": "For a second time, I've faced disability harassment. Here's what I learned by reporting it.",
+            "url": "https://www.bbc.co.uk/news/articles/cgkz2ek156yo",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/9f9e/live/ae6c64b0-c1c6-11f0-8456-eff94716b162.jpg",
+            "publishedAt": "2025-11-15T07:07:14.632479Z",
+            "content": "\"Stop them!\" I shouted, as I sped through London's Finsbury Park station in my electric wheelchair. I was surrounded by commuters. Nobody intervened.\r\nI had been travelling alone and was checking my … [+1487 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "The Barking Dog quiz cheating: BBC visits pub - and sees the questions",
+            "description": "The weekly pub quiz at the Barking Dog in Urmston returns after a cheating team was rumbled.",
+            "url": "https://www.bbc.co.uk/news/articles/c33p05lyzlko",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/b124/live/33756a40-c176-11f0-ae46-bd64331f0fd4.jpg",
+            "publishedAt": "2025-11-15T03:07:13.9600323Z",
+            "content": "Huddled around their tables, locals poured into The Barking Dog each week to take on a pub quiz - but one thing was amiss. \r\nThe same team kept winning the prize of a £30 bar tab, leaving regulars sc… [+1261 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Newspaper headlines: 'Panic at No 10' and investors 'lose faith' in Budget",
+            "description": "Signs that the chancellor has backtracked on plans to raise income tax dominate Saturday's newspapers.",
+            "url": "https://www.bbc.co.uk/news/articles/cyv8zm21e5vo",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/6920/live/0037b310-c1bf-11f0-8669-5560f5c90fbe.png",
+            "publishedAt": "2025-11-15T02:22:15.4093287Z",
+            "content": "Image caption, Finally, the Daily Star pictures Peter Mandelson leaving what it says is the home of ex-chancellor George Osborne. Madelson, who quit as ambassador to the US in September over his ties… [+132 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Should Hitler's DNA have been studied?",
+            "description": "Ground-breaking research has made some fascinating discoveries on the dictator, from his ancestry to possible neurological disorders.",
+            "url": "https://www.bbc.co.uk/news/articles/c5ylw4pz83do",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/0050/live/28239a20-c17d-11f0-8456-eff94716b162.jpg",
+            "publishedAt": "2025-11-15T02:07:16.4082529Z",
+            "content": "More complicated and controversial are the results suggesting Hitler may have had one or more neurodiverse or mental health conditions.\r\nLooking at his genome, and comparing it with polygenic scores,… [+1876 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Trump says he will sue BBC for at least $1bn over Panorama edit",
+            "description": "The US president told reporters on Air Force One that he will take legal action against the broadcaster and will call Sir Keir Starmer over the weekend.",
+            "url": "https://www.bbc.co.uk/news/articles/c891jp9j79do",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/0f2c/live/60f697b0-1203-11ef-82e8-cd354766a224.png",
+            "publishedAt": "2025-11-15T00:52:21.4706267Z",
+            "content": "Earlier this week Trump's lawyers threatened to sue the BBC for $1bn in damages unless the corporation issued a retraction, apologised and compensated him. \r\nTrump's lawyers had given the BBC a deadl… [+579 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "What's behind Rachel Reeves's hokey cokey on income tax rises?",
+            "description": "The bond markets selling UK debt, which the chancellor had spent months courting, reacted badly to her change of heart on income tax rises",
+            "url": "https://www.bbc.co.uk/news/articles/cx2yzj6619wo",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/73b9/live/d57c0240-c194-11f0-b1da-c7b043da88d2.jpg",
+            "publishedAt": "2025-11-14T22:22:25.8607419Z",
+            "content": "After weeks of wondering will she, won't she, and recent heavy hints that she would indeed raise income taxes in the Budget, Chancellor Rachel Reeves has now decided against the manifesto-breaching m… [+2611 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "UK set to limit asylum seekers to temporary stays",
+            "description": null,
+            "url": "https://www.bbc.co.uk/news/articles/c231x8rj1zpo",
+            "urlToImage": null,
+            "publishedAt": "2025-11-14T22:22:06.063996Z",
+            "content": null
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Weather warnings in force as Storm Claudia brings heavy rain to UK",
+            "description": "The storm has brought flooding and downpours, with some areas expecting up to a month's worth of rain in a day.",
+            "url": "https://www.bbc.co.uk/news/articles/c4gw5xxej04o",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/a7c5/live/c48b8af0-c171-11f0-8669-5560f5c90fbe.jpg",
+            "publishedAt": "2025-11-14T19:37:22.2837409Z",
+            "content": "Amber warnings for rain-soaked parts of Wales, the Midlands, the south west, south east, east of England, and areas of northern England, came into force on Friday, with heavy rainfall predicted into … [+1034 chars]"
+        },
+        {
+            "source": {
+                "id": "bbc-news",
+                "name": "BBC News"
+            },
+            "author": "BBC News",
+            "title": "Trump to order probe into Epstein's alleged ties to Clinton and banks",
+            "description": "Trump said on social media he was seeking investigations into Clinton, Larry Summers as well as JP Morgan and other major banks.",
+            "url": "https://www.bbc.co.uk/news/articles/cj97x2lere0o",
+            "urlToImage": "https://ichef.bbci.co.uk/ace/branded_news/1200/cpsprodpb/248a/live/1c6c58d0-c181-11f0-be56-f12785bd2327.jpg",
+            "publishedAt": "2025-11-14T18:22:21.1439739Z",
+            "content": "In addition to Clinton, Trump said he asked the Department of Justice (DoJ) to investigate banks JP Morgan and Chase, former Treasury Secretary Larry Summers and LinkedIn founder Reid Hoffman, who is… [+405 chars]"
+        }
+    ]
+}
+

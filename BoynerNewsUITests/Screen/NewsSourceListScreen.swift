@@ -27,9 +27,16 @@ struct NewsSourceListScreen: ScreenProtocol {
     // MARK: - Verifications
     
     @discardableResult
-    func waitForListToLoad(timeout: TimeInterval = 5) -> Self {
+    func waitForListToLoad(timeout: TimeInterval = 1) -> Self {
         XCTAssertTrue(loadingIndicator.waitForNonExistence(timeout: timeout))
         XCTAssertTrue(list.exists)
+        return self
+    }
+    
+    @discardableResult
+    func verifyAlertExists(message: String, timeout: TimeInterval = 1) -> Self {
+        let alert = app.staticTexts[message]
+        XCTAssertTrue(alert.waitForExistence(timeout: timeout))
         return self
     }
 }

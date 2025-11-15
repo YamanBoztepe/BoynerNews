@@ -14,15 +14,13 @@ protocol NetworkServiceProtocol {
 nonisolated final class NetworkManager: NetworkServiceProtocol {
     
     private let session: URLSessionProtocol
-    private let decoder: JSONDecoder
     private let environment: EnvironmentType
     
-    init(session: URLSessionProtocol = URLSession.shared,
-         decoder: JSONDecoder = JSONDecoder(),
-         environment: EnvironmentType = .release) {
-        self.session = session
-        self.decoder = decoder
+    private var decoder = JSONDecoder()
+    
+    init(environment: EnvironmentType, session: URLSessionProtocol) {
         self.environment = environment
+        self.session = session
     }
     
     func callService<T: Decodable>(_ request: BNServiceRequest, responseType: T.Type) async -> Result<T, NetworkError> {

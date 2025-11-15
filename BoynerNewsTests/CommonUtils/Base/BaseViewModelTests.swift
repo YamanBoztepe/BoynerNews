@@ -20,7 +20,7 @@ final class BaseViewModelTests: CommonXCTestCase {
     
     override func setUp() {
         super.setUp()
-        sut = BaseViewModel(service: fakeNetworkService)
+        sut = BaseViewModel()
     }
     
     override func tearDown() {
@@ -31,10 +31,6 @@ final class BaseViewModelTests: CommonXCTestCase {
     // MARK: - Tests
     
     func test_request_whenSucceed_shouldReturnResponse() async {
-        // Given
-        let articles = NewsList.ArticlesResponse(articles: [])
-        fakeNetworkService.result = .success(articles)
-        
         // When
         let response = await sut.callService(request, responseType: NewsList.ArticlesResponse.self)
         
@@ -45,14 +41,15 @@ final class BaseViewModelTests: CommonXCTestCase {
     
     func test_request_whenFailed_shouldDisplayAlert() async {
         // Given
-        let expectedError = NetworkError.invalidURL
-        fakeNetworkService.result = .failure(expectedError)
+        let service = sut.service as? MockNetworkManager
+        service?.scenario = .serverErrorFailure
+        
         
         // When
         let response = await sut.callService(request, responseType: NewsList.ArticlesResponse.self)
         
         // Then
-        XCTAssertEqual((sut.alert?.title).stringValue, expectedError.localizedDescription)
+        XCTAssertEqual((sut.alert?.title).stringValue, NetworkError.serverError.localizedDescription)
         XCTAssertNil(response)
     }
 }

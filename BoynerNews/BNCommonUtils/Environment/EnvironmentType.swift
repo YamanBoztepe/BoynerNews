@@ -6,16 +6,18 @@
 //
 
 enum EnvironmentType {
-    case release
-    case test
-    case mock
+    case prod
+    case dummyData
+}
+
+extension EnvironmentType {
     
     var host: String {
         switch self {
-        case .release, .test:
+        case .prod:
             return NetworkConstants.BaseURL.release.rawValue
-        case .mock:
-            return NetworkConstants.BaseURL.mock.rawValue
+        case .dummyData:
+            return NetworkConstants.BaseURL.dummyData.rawValue
         }
     }
 }

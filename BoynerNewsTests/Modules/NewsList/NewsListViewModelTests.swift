@@ -29,32 +29,27 @@ final class NewsListViewModelTests: CommonXCTestCase {
     // MARK: - Tests
     
     func test_getNews() async {
-        // Given
-        fakeNetworkService.result = .success(NewsListMockData.articlesResponse)
-        sut.service = fakeNetworkService
-        
         // When
-        await sut.getNews(for: "bbc")
-        sut.articles.first!.onToggleReadingList("")
+        await sut.getNews(for: NewsListMockData.sourceName)
         
         // Then
-        XCTAssertEqual(sut.articles.count, NewsListMockData.articles.count)
-        XCTAssertEqual(sut.sliderArticles.count, NewsListMockData.articles.prefix(3).count)
-        XCTAssertEqual(sut.listArticles.count, NewsListMockData.articles.dropFirst(3).count)
-        XCTAssertEqual(sut.screenTitle, NewsListMockData.articles.first?.source.name)
+        let articles = NewsListMockData.screenDataResponse?.articles
+        
+        XCTAssertEqual(sut.articles.count, articles?.count)
+        XCTAssertEqual(sut.sliderArticles.count, articles?.prefix(3).count)
+        XCTAssertEqual(sut.listArticles.count, articles?.dropFirst(3).count)
+        XCTAssertEqual(sut.screenTitle, articles?.first?.source.name)
         XCTAssertFalse(sut.noArticlesFound)
     }
     
     func test_onToggleReadingList_whenArticleNotExists() async {
         // Given
-        fakeNetworkService.result = .success(NewsListMockData.articlesResponse)
-        sut.service = fakeNetworkService
-        
         fakeArticleRepository.isArticleExists = false
         sut.articlesRepository = fakeArticleRepository
         
         // When
-        await sut.getNews(for: "bbc")
+        await sut.getNews(for: NewsListMockData.sourceName)
+        
         let article = sut.articles.first!
         article.onToggleReadingList(article.id)
         
@@ -67,14 +62,11 @@ final class NewsListViewModelTests: CommonXCTestCase {
     
     func test_onToggleReadingList_whenArticleExists() async {
         // Given
-        fakeNetworkService.result = .success(NewsListMockData.articlesResponse)
-        sut.service = fakeNetworkService
-        
         fakeArticleRepository.isArticleExists = true
         sut.articlesRepository = fakeArticleRepository
         
         // When
-        await sut.getNews(for: "bbc")
+        await sut.getNews(for: NewsListMockData.sourceName)
         let article = sut.articles.first!
         article.onToggleReadingList(article.id)
         
@@ -88,8 +80,6 @@ final class NewsListViewModelTests: CommonXCTestCase {
     func test_pullToRefresh() async {
         // Given
         sut.articles = NewsListMockData.rowViewModels
-        fakeNetworkService.result = .success(NewsListMockData.articlesResponse)
-        sut.service = fakeNetworkService
         sut.screenRequest = BNServiceRequest(endpoint: .topHeadlines)
         
         // When
