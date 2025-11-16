@@ -102,7 +102,7 @@ BaseViewModel tüm bağımlılıkları init parametreleri olarak alıyor. Bu say
 - Production: Gerçek API çağrıları
 - Dummy Data: Testler için mock network manager
 
-Environment otomatik olarak test ortamında algılanıyor ve uygun yapılandırma kullanılıyor.
+Environment otomatik olarak algılanıyor ve uygun yapılandırma kullanılıyor.
 
 ### Network Layer
 
@@ -110,7 +110,7 @@ Protocol-based bir network katmanı var. URLSessionProtocol ile test edilebilirl
 
 ### Persistence
 
-Core Data ile yerel saklama yapılıyor. ArticlesRepository okuma listesi yönetimi için kullanılıyor.
+Core Data ile yerel depolama yapılıyor. ArticlesRepository okuma listesi yönetimi için kullanılıyor.
 
 ### Polling Service
 
@@ -137,7 +137,7 @@ Build configuration'lar Debug ve Release olarak ayrıldı. Config dosyaları `Co
 
 ## Kod Standartları
 
-SwiftLint kullanılıyor. MARK yorumları ile kod organize edildi. Protocol-oriented ve extension-based bir yaklaşım benimsendi.
+SwiftLint kullanılıyor. Gerekli yerlerde yorumlar eklenerek kod organize edildi. Protocol-oriented ve extension-based bir yaklaşım benimsendi.
 
 ## Bilinen Sorunlar
 
