@@ -11,6 +11,8 @@ class BaseViewModel: ObservableObject {
     // MARK: - Published (UI bindable)
     @Published private(set) var isLoading = false
     @Published var alert: AlertModel?
+    @Published var presentEmptyState = false
+    @Published var screenTitle = ""
     
     // MARK: - Dependencies
     var service: NetworkServiceProtocol

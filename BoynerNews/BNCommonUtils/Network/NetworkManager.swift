@@ -38,7 +38,7 @@ nonisolated final class NetworkManager: NetworkServiceProtocol {
                 return .failure(error)
             }
             
-            // Decoding raw data to given response model and check if response status is ok
+            // Decoding raw data to given response model and check if response status is OK
             return try validateAPIResponse(data: data, type: T.self)
             
         } catch _ as DecodingError {

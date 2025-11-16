@@ -9,7 +9,6 @@ import Combine
 
 final class NewsSourceListViewModel: BaseViewModel {
     @Published var sources = [NewsSourceList.Source]()
-    @Published var noSourcesFound = false
     @Published var categories = [String]()
     @Published var selectedCategories = [String]() {
         didSet {
@@ -32,7 +31,7 @@ final class NewsSourceListViewModel: BaseViewModel {
         
         // Apply filter if there are selected categories
         filterSourcesBySelectedCategories()
-        noSourcesFound = sources.isEmpty
+        presentEmptyState = sources.isEmpty
     }
     
     private func filterSourcesBySelectedCategories() {

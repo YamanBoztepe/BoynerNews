@@ -17,7 +17,8 @@ struct AlertModifier: ViewModifier {
             if let alert {
                 tappableBackground
                 makeAlertCard(alert: alert)
-                    .frame(width: 500)
+                    .frame(maxWidth: 500)
+                    .padding(.horizontal, 20)
                     .transition(.scale.combined(with: .opacity))
             }
         }
@@ -38,10 +39,10 @@ private extension AlertModifier {
     }
 
     func makeAlertCard(alert: AlertModel) -> some View {
-        VStack(spacing: 16) {
+        VStack(spacing: 24) {
             Text(alert.title)
-                .foregroundStyle(.black)
-                .font(.body)
+                .foregroundStyle(.primary)
+                .font(.headline)
 
             ForEach(alert.buttons) { button in
                 Button {
@@ -50,16 +51,16 @@ private extension AlertModifier {
                 } label: {
                     Text(button.title)
                         .foregroundStyle(.white)
-                        .font(.caption)
+                        .font(.body)
                         .padding()
                         .background(Color.blue)
-                        .cornerRadius(8)
+                        .cornerRadius(12)
                 }
             }
         }
         .padding(32)
-        .background(Color.white)
-        .cornerRadius(16)
+        .background(.ultraThinMaterial)
+        .cornerRadius(20)
         .shadow(radius: 10)
     }
 }

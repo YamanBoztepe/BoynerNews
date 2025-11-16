@@ -11,5 +11,5 @@ struct NewsRowViewModel: Identifiable {
     let date: String
     let imageURL: String
     var isAddedToReadingList: Bool
-    let onToggleReadingList: (String) -> Void
+    let onToggleReadingList: (Self) -> Void
 }

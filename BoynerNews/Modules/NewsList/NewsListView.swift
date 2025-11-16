@@ -23,12 +23,17 @@ struct NewsListView: View {
         .refreshable { await viewModel.pullToRefresh() }
         .onAppear(perform: viewModel.startPolling)
         .onDisappear(perform: viewModel.stopPolling)
-        .presentEmptyPlaceholder(viewModel.noArticlesFound,
+        .presentEmptyPlaceholder(viewModel.presentEmptyState,
                                  message: NewsList.emptyListMessage)
         .isLoading(viewModel.isLoading)
         .presentAlert(alert: $viewModel.alert)
         .accessibilityIdentifier(Identifiers.NewsList.list)
     }
+}
+
+// MARK: - Views
+
+private extension NewsListView {
     
     @ViewBuilder
     var sliderSection: some View {

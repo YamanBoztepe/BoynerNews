@@ -39,7 +39,7 @@ final class NewsListViewModelTests: CommonXCTestCase {
         XCTAssertEqual(sut.sliderArticles.count, articles?.prefix(3).count)
         XCTAssertEqual(sut.listArticles.count, articles?.dropFirst(3).count)
         XCTAssertEqual(sut.screenTitle, articles?.first?.source.name)
-        XCTAssertFalse(sut.noArticlesFound)
+        XCTAssertFalse(sut.presentEmptyState)
     }
     
     func test_onToggleReadingList_whenArticleNotExists() async {
@@ -51,7 +51,7 @@ final class NewsListViewModelTests: CommonXCTestCase {
         await sut.getNews(for: NewsListMockData.sourceName)
         
         let article = sut.articles.first!
-        article.onToggleReadingList(article.id)
+        article.onToggleReadingList(article)
         
         // Then
         XCTAssertTrue(fakeArticleRepository.isArticleExistsCalled)
@@ -68,7 +68,7 @@ final class NewsListViewModelTests: CommonXCTestCase {
         // When
         await sut.getNews(for: NewsListMockData.sourceName)
         let article = sut.articles.first!
-        article.onToggleReadingList(article.id)
+        article.onToggleReadingList(article)
         
         // Then
         XCTAssertTrue(fakeArticleRepository.isArticleExistsCalled)
@@ -87,7 +87,7 @@ final class NewsListViewModelTests: CommonXCTestCase {
         
         // Then
         XCTAssertNotEqual(sut.articles.first?.id, NewsListMockData.rowViewModels.first?.id)
-        XCTAssertFalse(sut.noArticlesFound)
+        XCTAssertFalse(sut.presentEmptyState)
     }
     
     func test_pullToRefresh_shouldSimulateNetworkError() async {
@@ -101,7 +101,7 @@ final class NewsListViewModelTests: CommonXCTestCase {
         
         // Then
         XCTAssertTrue(sut.articles.isEmpty)
-        XCTAssertTrue(sut.noArticlesFound)
+        XCTAssertTrue(sut.presentEmptyState)
         XCTAssertNotNil(sut.alert)
         
     }

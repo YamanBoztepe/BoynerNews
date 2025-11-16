@@ -9,6 +9,8 @@
 
 import Foundation
 
+/// `MockNetworkManager` Handles mock network calls.
+/// `scenario` Force specific mock behavior.
 nonisolated final class MockNetworkManager: NetworkServiceProtocol {
     
     var scenario: MockScenario?
@@ -27,6 +29,7 @@ nonisolated final class MockNetworkManager: NetworkServiceProtocol {
 
 private extension MockNetworkManager {
     
+    /// Reads JSON file for the endpoint and decode to given model.
     func responseData<T>(for endpoint: String) -> Result<T, NetworkError> where T: Decodable {
         let fileName = endpoint.replacingOccurrences(of: "/", with: "_")
         
@@ -44,6 +47,7 @@ private extension MockNetworkManager {
         }
     }
     
+    /// Determines the active mock scenario from launch arguments or property.
     func checkScenario() -> MockScenario? {
         let arguments = ProcessInfo.processInfo.arguments
         var scenarioFromArguments: MockScenario?

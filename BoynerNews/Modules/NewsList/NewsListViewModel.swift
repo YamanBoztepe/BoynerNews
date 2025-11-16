@@ -11,8 +11,6 @@ import SwiftUI
 final class NewsListViewModel: BaseViewModel {
     @Published var sliderArticles = [NewsRowViewModel]()
     @Published var listArticles = [NewsRowViewModel]()
-    @Published var noArticlesFound = false
-    @Published var screenTitle = ""
     
     private var pullToRefreshCounter = 0
     private var timer: Timer?
@@ -20,8 +18,7 @@ final class NewsListViewModel: BaseViewModel {
     var screenRequest: BNServiceRequest?
     var articles = [NewsRowViewModel]() {
         didSet {
-            sliderArticles = Array(articles.prefix(3))
-            listArticles = Array(articles.dropFirst(3))
+            updatePublishedLists()
         }
     }
     
@@ -32,7 +29,6 @@ final class NewsListViewModel: BaseViewModel {
         articles = getArticles(from: response)
         screenTitle = response?.articles?.first?.source.name ?? NewsList.title
         screenRequest = request
-        noArticlesFound = articles.isEmpty
     }
     
     func pullToRefresh() async {
@@ -69,8 +65,6 @@ private extension NewsListViewModel {
         if articles.first?.id != newArticles.first?.id {
             articles = newArticles
         }
-        
-        noArticlesFound = articles.isEmpty
     }
     
     func getArticles(from response: NewsList.ArticlesResponse?) -> [NewsRowViewModel] {
@@ -85,23 +79,22 @@ private extension NewsListViewModel {
                                     title: article.title.stringValue,
                                     date: article.dateValue.toString(),
                                     imageURL: article.urlToImage.stringValue,
-                                    isAddedToReadingList: isAddedToReadingList) { [weak self] articleId in
-                self?.onToggleReadingList(forArticleWithId: articleId)
+                                    isAddedToReadingList: isAddedToReadingList) { [weak self] article in
+                self?.onToggleReadingList(article)
             }
         }
     }
     
-    func onToggleReadingList(forArticleWithId id: String) {
-        let isArticleExists = articlesRepository.isArticleExists(id)
+    func onToggleReadingList(_ article: NewsRowViewModel) {
         
-        if isArticleExists {
-            articlesRepository.removeArticle(id)
+        if article.isAddedToReadingList {
+            articlesRepository.removeArticle(article.id)
         } else {
-            articlesRepository.addArticle(id)
+            articlesRepository.addArticle(article.id)
         }
         
-        if let index = articles.firstIndex(where: { $0.id == id }) {
-            articles[index].isAddedToReadingList = !isArticleExists
+        if let index = articles.firstIndex(where: { $0.id == article.id }) {
+            articles[index].isAddedToReadingList.toggle()
         }
     }
     
@@ -110,7 +103,6 @@ private extension NewsListViewModel {
         
         if pullToRefreshCounter.isMultiple(of: 3) {
             articles.removeAll()
-            noArticlesFound = articles.isEmpty
             
             let retryButton = AlertButton(title: NewsList.tryAgainText) { [weak self] in
                 Task {
@@ -119,5 +111,11 @@ private extension NewsListViewModel {
             }
             alert = AlertModel(title: NewsList.errorAlertMessage, buttons: [retryButton])
         }
+    }
+    
+    func updatePublishedLists() {
+        sliderArticles = Array(articles.prefix(3))
+        listArticles = Array(articles.dropFirst(3))
+        presentEmptyState = articles.isEmpty
     }
 }

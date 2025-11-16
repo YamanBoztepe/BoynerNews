@@ -30,6 +30,7 @@ extension HorizontalScrollItemsView {
 // MARK: - Helper Methods
 
 private extension HorizontalScrollItemsView {
+    
     func isSelected(_ item: String) -> Bool {
         selectedItems.contains(item)
     }

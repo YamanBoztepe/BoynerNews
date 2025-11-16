@@ -13,13 +13,14 @@ struct NewsSourceListView: View {
     var body: some View {
         List {
             categorySection
-            sourceListSection
+            sourceList
         }
         .listStyle(.plain)
+        .accessibilityIdentifier(Identifiers.NewsSourceList.list)
         .task { await viewModel.getNewsSources() }
         .navigationTitle(NewsSourceList.title)
         .animation(.smooth, value: viewModel.selectedCategories)
-        .presentEmptyPlaceholder(viewModel.noSourcesFound,
+        .presentEmptyPlaceholder(viewModel.presentEmptyState,
                                  message: NewsSourceList.emptyListMessage)
         .isLoading(viewModel.isLoading)
         .presentAlert(alert: $viewModel.alert)
@@ -40,7 +41,7 @@ private extension NewsSourceListView {
         .accessibilityIdentifier(Identifiers.NewsSourceList.categories)
     }
     
-    var sourceListSection: some View {
+    var sourceList: some View {
         ForEach(viewModel.sources) { source in
             NavigationLink(destination: NewsListView(source: source.id.stringValue)) {
                 TitleAndDescriptionView(title: source.name.stringValue,
@@ -48,7 +49,6 @@ private extension NewsSourceListView {
             }
             .buttonStyle(.plain)
         }
-        .accessibilityIdentifier(Identifiers.NewsSourceList.list)
     }
 }
 

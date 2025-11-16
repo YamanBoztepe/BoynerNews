@@ -20,10 +20,11 @@ struct NewsListScreen: ScreenProtocol {
     
     @discardableResult
     func pullToRefresh() -> Self {
-        let firstCell = list.cells.firstMatch
-        let start = firstCell.coordinate(withNormalizedOffset: CGVector(dx: 0, dy: 0))
-        let end = start.withOffset(CGVector(dx: 0, dy: 500))
-        start.press(forDuration: 0.1, thenDragTo: end)
+        let listHeight = list.frame.height
+        let dragDistance = listHeight * 0.7
+        let start = list.coordinate(withNormalizedOffset: CGVector(dx: 0.5, dy: 0.2))
+        let end = start.withOffset(CGVector(dx: 0, dy: dragDistance))
+        start.press(forDuration: 0, thenDragTo: end)
         
         return self
     }

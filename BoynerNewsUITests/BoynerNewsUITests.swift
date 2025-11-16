@@ -21,11 +21,11 @@ final class BoynerNewsUITests: XCTestCase {
         app.terminate()
     }
     
-    private func launch(with scenario: UITestScenario? = nil) {
-        var launchArguments = ["-UITesting"]
+    private func launch(with scenario: String? = nil) {
+        var launchArguments = [UITestMockData.uiTestArgument]
         
         if let scenario {
-            launchArguments.append(scenario.rawValue)
+            launchArguments.append(scenario)
         }
         
         app.launchArguments = launchArguments
@@ -36,10 +36,10 @@ final class BoynerNewsUITests: XCTestCase {
     
     func test_sourceList_showsErrorAlert_onLaunchFailure() {
         // Given
-        launch(with: .serverErrorFailure)
+        launch(with: UITestMockData.serverErrorFailure)
         
         // Then
-        sourceListScreen.verifyAlertExists(message: "Server error")
+        sourceListScreen.verifyAlertExists(message: UITestMockData.serverErrorMessage)
     }
     
     func test_sourceList_navigateToNewsList() {
@@ -74,7 +74,7 @@ final class BoynerNewsUITests: XCTestCase {
             .pullToRefresh()
             .waitForListToLoad()
             .pullToRefresh()
-            .verifyAlertExists(message: "Information could not be received!")
+            .verifyAlertExists(message: UITestMockData.informationErrorMessage)
     }
 }
 

@@ -39,7 +39,7 @@ extension NewsRowView {
     
     var addToReadingListButton: some View {
         Button {
-            model.onToggleReadingList(model.id)
+            model.onToggleReadingList(model)
         } label: {
             Text(buttonTitle)
                 .font(.caption)
