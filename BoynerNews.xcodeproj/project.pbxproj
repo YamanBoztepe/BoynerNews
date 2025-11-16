@@ -30,10 +30,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		1CB24CC22ECA02C3003B72CD /* Exceptions for "BoynerNews" folder in "BoynerNews" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 1CCC9F732EC3276A00CD9DD7 /* BoynerNews */;
+		};
 		1CF838B62EC7B68100C201DC /* Exceptions for "BoynerNews" folder in "BoynerNewsUITests" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				BNCore/BNUtility.swift,
+				BNCore/ConfigValueReader.swift,
 				BNCore/Identifiers.swift,
 			);
 			target = 1CCC9F8F2EC3276C00CD9DD7 /* BoynerNewsUITests */;
@@ -44,6 +52,7 @@
 		1CCC9F762EC3276A00CD9DD7 /* BoynerNews */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
+				1CB24CC22ECA02C3003B72CD /* Exceptions for "BoynerNews" folder in "BoynerNews" target */,
 				1CF838B62EC7B68100C201DC /* Exceptions for "BoynerNews" folder in "BoynerNewsUITests" target */,
 			);
 			path = BoynerNews;
@@ -293,6 +302,8 @@
 /* Begin XCBuildConfiguration section */
 		1CCC9F982EC3276C00CD9DD7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 1CCC9F762EC3276A00CD9DD7 /* BoynerNews */;
+			baseConfigurationReferenceRelativePath = Config/Debug.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -357,6 +368,8 @@
 		};
 		1CCC9F992EC3276C00CD9DD7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 1CCC9F762EC3276A00CD9DD7 /* BoynerNews */;
+			baseConfigurationReferenceRelativePath = Config/Release.xcconfig;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -422,6 +435,7 @@
 				DEVELOPMENT_TEAM = X8F92F5YZ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoynerNews/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -455,6 +469,7 @@
 				DEVELOPMENT_TEAM = X8F92F5YZ5;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BoynerNews/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -6,7 +6,7 @@
 //
 
 enum NetworkConstants {
-    static let apiKey = "ee39302f2a97490abbd69d073c279505"
+    static let apiKey = ConfigValueReader.string(forKey: "API_KEY")
     
     enum BaseURL: String {
         case release = "https://newsapi.org/v2/"
