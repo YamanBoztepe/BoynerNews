@@ -55,23 +55,6 @@ Bağımlılıklar:
 - Xcode 14.0+
 - Swift 5.7+
 
-## Kurulum
-
-1. Projeyi klonla:
-```bash
-git clone <repository-url>
-cd BoynerNews
-```
-
-2. Xcode'da aç:
-```bash
-open BoynerNews.xcodeproj
-```
-
-3. Xcode otomatik olarak Swift Package Manager bağımlılıklarını yükler
-
-4. Projeyi derle ve çalıştır (⌘R)
-
 ## Testler
 
 Projede unit testler ve UI testler var.
